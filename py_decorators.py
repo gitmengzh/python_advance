@@ -23,7 +23,7 @@ def func2():
 def func3():
     time.sleep(3)
 
-#   带参数的装饰器
+
 def log(func):
     def wrapper(*args, **kwargs):
         print("现在执行{}方法".format(func.__name__))
@@ -35,11 +35,19 @@ def log(func):
 def add_func(a,b):
     print("{} + {} = {}".format(a, b, a+b))
 
-add_func(10, 20)
-func1()
-func2()
-func3()
+
+
+#  带参数的装饰器
+
+
+#  自定义属性的装饰器
+
+
+if __name__ == "__main__":
+    add_func(10, 20)
+    func1()
+    func2()
+    func3()
 
 
 
-#   自定义属性的装饰器
