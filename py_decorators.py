@@ -1,4 +1,4 @@
-#  装饰器
+#  装饰器    https://zhuanlan.zhihu.com/p/269012332
 
 import time
 
