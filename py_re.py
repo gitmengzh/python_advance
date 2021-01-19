@@ -23,7 +23,7 @@ def match():
     e = re.match(r'\d+', s3)
     print(e)
 
-# search
+# search  # 搜索字符串
 def search():
     s1 = 'abcaBccba'
     a = re.search(r'([a-z]+)\1+', s1, re.I)  # re.I 不区分大小写
@@ -44,7 +44,13 @@ def sub():
     a = re.sub(r'([a-z]+)\1+', 'test', s1, re.I)  # re.I 不区分大小写
     print(a)
 
-
+#  re.re.compile 函数
+# compile 函数用于编译正则表达式，生成一个正则表达式（ Pattern ）对象，供 match() 和 search() 这两个函数使用。
+# re.compile(pattern[, flags])  pattern : 一个字符串形式的正则表达式  flags : 可选，表示匹配模式，比如忽略大小写，多行模式等
+def compile(s):
+    pattern = re.compile("({(.*)})")  # 搜索{}包含的内容   .* 就是单个字符匹配任意次，即贪婪匹配
+    res = pattern.search(s)
+    return res
 if __name__ == "__main__":
 
     match()
