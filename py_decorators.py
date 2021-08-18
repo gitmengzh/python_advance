@@ -107,7 +107,7 @@ def logging(func, *args, **kwargs):
     return func(*args, **kwargs)
 
 @logging
-def f(a, b):
+def f1(a, b):
     return a + b
 
 
@@ -121,8 +121,8 @@ if __name__ == "__main__":
     # func2()
     # func3()
     # muilt_func(10, 20)
-    f()
-    print(g(1,2))
+    f1(1,2)
+    #print(g(1,2))
 
 
 
