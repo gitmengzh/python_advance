@@ -7,7 +7,7 @@ base_url = "http://127.0.0.1:5000/"
 
 conversion_url = base_url + '/conversion'
 request_data = {
-    "conversion_id": 123,
+    # "conversion_id": '',
     "conversion_name": "testst"
 }
 
