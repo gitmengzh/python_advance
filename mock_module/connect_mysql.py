@@ -1,4 +1,6 @@
+# https://pymysql.readthedocs.io/en/latest/user/examples.html   pymysql doc
 import pymysql
+
 
 class OpeMysql(object):
     def __init__(self, mysql_base_data):
@@ -28,34 +30,21 @@ class OpeMysql(object):
             return ('数据库连接失败' + str(e))
     @classmethod
     def operate_mysql(sql):
-        conn =
-        with conn:
-            with conn.cursor() as cursor:
-        cur.
-        conn = pymysql.connect(host=setting.MYSQL_HOST, user=setting.USER,
-                               7
-
-        cur = conn.cursor(cursor=pymysql.cursors.DictCursor)
-        12  # 判断是否需要commit，根据select update delete insert的类型
-        13
-        cur.execute(sql)
-        14
-        sql_start = sql[:6].upper()  # select不区分大小写,取前6位转换成大写
-        15
-        if sql_start == 'SELECT':
-            16
-            res = cur.fetchall()
-        17 else:
-        18
-        conn.commit()
-        19
-        res = 'ok'
-        20
-        cur.close()
-        21
-        conn.close()
-        22
-        return res
+        pass
+        # conn = pymysql.connect(host=setting.MYSQL_HOST, user=setting.USER,
+        # cur = conn.cursor(cursor=pymysql.cursors.DictCursor)
+        # with conn:
+        #     with conn.cursor() as cursor:
+        #         cursor.execute(sql)
+        #         sql_start = sql[:6].upper()  # select不区分大小写,取前6位转换成大写
+        #         if sql_start == 'SELECT':
+        #         res = cur.fetchall()
+        #     else:
+        #         conn.commit()
+        #         res = 'ok'
+        #         cur.close()
+        # conn.close()
+        # return res
 
 def aaa():
     connection = pymysql.connect(host='101.34.65.89',
@@ -66,11 +55,11 @@ def aaa():
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
     with connection:
-    #     with connection.cursor() as cursor:
-    #         # Create a new record
-    #         sql = "SELECT * FROM test_conversion_name "
-    #         res = cursor.execute(sql)
-    # return res
+        with connection.cursor() as cursor:
+            # Create a new record
+            sql = "SELECT * FROM test_conversion_name "
+            res = cursor.execute(sql)
+    return res
     cursor = connection.cursor()
     return  cursor
 if __name__ == "__main__":
@@ -81,5 +70,5 @@ if __name__ == "__main__":
         "dbport":9998,
         "dbname": "test_conversion1"
     }
-    print(connect_mysql(mysql_basedata))
+    # print(connect_mysql(mysql_basedata))
     # print(aaa())
