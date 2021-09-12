@@ -1,7 +1,15 @@
 from flask import Flask
 from flask import jsonify
 from flask import request
-import json
+from mock_module.connect_mysql import connect_mysql
+
+mysql_basedata = {
+        "dbhost": "101.34.65.89",
+        "dbuser": "root",
+        "dbpassword": "Dream@1618*",
+        "dbport":9998,
+        "dbname": "test_conversion1"
+    }
 
 def get_conversion(conversion_id, conversion_name):
     if not conversion_id:
@@ -22,14 +30,24 @@ def get_conversion():
     # date = request.get_date()
     conversion_id = request.json.get("conversion_id")      # 转化id
     conversion_name = request.json.get("conversion_name")     # 转化名称
+    conversion_account = request.json.get("conversion_account")
+    # 在sql中使用变量
+    sql = 'select conversion_name from test_conversion_name where conversion_id = "%s"' % conversion_id  # 单个参数
+    # sql2 = 'select conversion_id from test_conversion_name where conversion_account = ? and conversion_name=? ' (conversion_account,  conversion_name)
+
+
+
+    res = connect_mysql(mysql_basedata, sql)
+
     # conversion_id = request.json.get('conversion_id')
     # conversion_name = request.values.get('conversion_name')
 
     # conversion_id = 123
     # conversion_name = "test123111111111111"
     # if conversion_id:
-    return jsonify({"conversion_id":conversion_id, "conversion_name": conversion_name})
+    # return jsonify({"conversion_id":conversion_id, "conversion_name": conversion_name})
 
+    return jsonify({"conversion_name":res[0]['conversion_name']})
     # response = {"conversion_id": conversion_id, "conversion_name": conversion_name}
     # return json.dumps(response, ensure_ascii=False)
 
